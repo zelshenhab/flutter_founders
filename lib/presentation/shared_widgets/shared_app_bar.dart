@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_founders/presentation/requests/create_request/create_request_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SharedAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -20,8 +21,16 @@ class SharedAppBar extends StatelessWidget implements PreferredSizeWidget {
           color: Colors.white,
         ),
       ),
-      actions: const [
-        Icon(Icons.edit_note, color: Colors.white, size: 38),
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.edit_note, color: Colors.white, size: 38),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const CreateRequestPage()),
+            );
+          },
+        ),
         SizedBox(width: 16),
         Icon(Icons.notifications_none, color: Colors.white, size: 38),
         SizedBox(width: 16),

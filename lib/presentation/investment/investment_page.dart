@@ -22,35 +22,40 @@ class _InvestmentPageState extends State<InvestmentPage> {
     context.read<InvestmentBloc>().add(LoadInvestmentsEvent());
   }
 
-@override
-Widget build(BuildContext context) {
-  return BlocBuilder<InvestmentBloc, InvestmentState>(
-    builder: (context, state) {
-      if (state is InvestmentLoading) {
-        return const Center(child: CircularProgressIndicator(color: Colors.white));
-      } else if (state is InvestmentLoaded) {
-        return ListView.builder(
-          itemCount: state.investments.length,
-          itemBuilder: (context, index) {
-            final inv = state.investments[index];
-            return InvestmentCard(
-              title: inv.title,
-              amount: inv.amount,
-              period: inv.period,
-              location: inv.location,
-              tag: inv.tag,
-              tagColor: Color(inv.tagColor),
-            );
-          },
-        );
-      } else if (state is InvestmentError) {
-        return Center(
-          child: Text(state.message, style: const TextStyle(color: Colors.red)),
-        );
-      } else {
-        return const SizedBox();
-      }
-    },
-  );
-}
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<InvestmentBloc, InvestmentState>(
+      builder: (context, state) {
+        if (state is InvestmentLoading) {
+          return const Center(
+            child: CircularProgressIndicator(color: Colors.white),
+          );
+        } else if (state is InvestmentLoaded) {
+          return ListView.builder(
+            itemCount: state.investments.length,
+            itemBuilder: (context, index) {
+              final inv = state.investments[index];
+              return InvestmentCard(
+                title: inv.title,
+                amount: inv.amount,
+                period: inv.period,
+                location: inv.location,
+                tag: inv.tag,
+                tagColor: Color(inv.tagColor),
+              );
+            },
+          );
+        } else if (state is InvestmentError) {
+          return Center(
+            child: Text(
+              state.message,
+              style: const TextStyle(color: Colors.red),
+            ),
+          );
+        } else {
+          return const SizedBox();
+        }
+      },
+    );
+  }
 }

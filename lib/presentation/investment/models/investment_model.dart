@@ -6,6 +6,7 @@ class InvestmentModel {
   final String location;
   final String tag;
   final int tagColor;
+  
 
   InvestmentModel({
     required this.title,

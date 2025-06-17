@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_founders/presentation/investment/models/details_investment_model.dart';
 
 import 'bloc/investment_bloc.dart';
 import 'bloc/investment_event.dart';
 import 'bloc/investment_state.dart';
 import 'widgets/investment_card.dart';
+import 'package:flutter_founders/presentation/investment/investment_details/investment_details.dart';
 
 class InvestmentPage extends StatefulWidget {
   const InvestmentPage({super.key});
@@ -42,6 +44,31 @@ class _InvestmentPageState extends State<InvestmentPage> {
                 location: inv.location,
                 tag: inv.tag,
                 tagColor: Color(inv.tagColor),
+onTap: () {
+  final detailsModel = DetailsInvestmentModel(
+    title: inv.title,
+    amount: inv.amount,
+    period: inv.period,
+    location: inv.location,
+    description: 'هذا وصف تجريبي للاستثمار رقم ${index + 1}.\nيمكن استبداله لاحقًا من خلال API.',
+    files: [
+      'Бизнес план.pdf',
+      'Финансовая модель.pdf',
+      'Презентация.pdf',
+    ],
+    managerName: 'Pavel Glotov',
+    managerImage: 'https://via.placeholder.com/150',
+    managerTags: ['Маркетинг', 'Логистика', 'Управление'],
+  );
+
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => InvestmentDetailsPage(investment: detailsModel),
+    ),
+  );
+}
+,
               );
             },
           );

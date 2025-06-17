@@ -1,4 +1,3 @@
-// lib/presentation/investment/widgets/investment_card.dart
 import 'package:flutter/material.dart';
 
 class InvestmentCard extends StatelessWidget {
@@ -8,6 +7,7 @@ class InvestmentCard extends StatelessWidget {
   final String location;
   final String tag;
   final Color tagColor;
+  final VoidCallback onTap;
 
   const InvestmentCard({
     super.key,
@@ -17,50 +17,55 @@ class InvestmentCard extends StatelessWidget {
     required this.location,
     required this.tag,
     required this.tagColor,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      child: Container(
-        decoration: BoxDecoration(
-          color: const Color(0xFF2C2C2E),
-          borderRadius: BorderRadius.circular(16),
-        ),
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style: const TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 16,
-              ),
-            ),
-            const SizedBox(height: 12),
-            _buildInfoRow('Объём привлекаемых средств', amount),
-            _buildInfoRow('Срок окупаемости', period),
-            _buildInfoRow('Страна реализации', location),
-            const SizedBox(height: 12),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-              decoration: BoxDecoration(
-                color: tagColor,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Text(
-                tag,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(16),
+        child: Container(
+          decoration: BoxDecoration(
+            color: const Color(0xFF2C2C2E),
+            borderRadius: BorderRadius.circular(16),
+          ),
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
                 style: const TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w600,
-                  fontSize: 12,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
                 ),
               ),
-            ),
-          ],
+              const SizedBox(height: 12),
+              _buildInfoRow('Объём привлекаемых средств', amount),
+              _buildInfoRow('Срок окупаемости', period),
+              _buildInfoRow('Страна реализации', location),
+              const SizedBox(height: 12),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                decoration: BoxDecoration(
+                  color: tagColor,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Text(
+                  tag,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 12,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -1,70 +1,70 @@
 import 'package:flutter/material.dart';
 
 class RequestHeader extends StatelessWidget {
-  const RequestHeader({super.key});
+  final String name;
+  final String company;
+  final String? avatarUrl;
+  final String time;
+
+  const RequestHeader({
+    super.key,
+    required this.name,
+    required this.company,
+    required this.time,
+    this.avatarUrl,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center, // ← ده المهم
       children: [
         // Avatar
-        const CircleAvatar(
-          radius: 30,
-          backgroundImage: AssetImage('assets/images/image 2.png'),
+        CircleAvatar(
+          radius: 45,
+          backgroundImage: avatarUrl != null ? AssetImage(avatarUrl!) : null,
+          backgroundColor: Colors.white10,
+          child: avatarUrl == null
+              ? const Icon(Icons.person, color: Colors.white)
+              : null,
         ),
         const SizedBox(width: 12),
 
-        // Name, company, subtitle
+        // Name and company
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
+            mainAxisSize:
+                MainAxisSize.min, // علشان الـ Column ما تاخدش ارتفاع زيادة
+            children: [
               Text(
-                'Александр Монтгомери',
-                style: TextStyle(
+                name,
+                style: const TextStyle(
                   fontSize: 16,
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),
               ),
               Text(
-                'ScaleUp Solutions',
-                style: TextStyle(
+                company,
+                style: const TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w400,
                   color: Color(0xFFAF925D),
-                ),
-              ),
-              Text(
-                'Цифровизация бизнеса',
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.white70,
                 ),
               ),
             ],
           ),
         ),
 
-        // Date & time
+        // Time
         Column(
           crossAxisAlignment: CrossAxisAlignment.end,
-          children: const [
+          mainAxisSize: MainAxisSize.min,
+          children: [
             Text(
-              '11.04',
-              style: TextStyle(
-                fontSize: 12,
-                color: Colors.white70,
-              ),
-            ),
-            SizedBox(height: 4),
-            Text(
-              '8:16 PM',
-              style: TextStyle(
-                fontSize: 12,
-                color: Colors.white70,
-              ),
+              time,
+              style: const TextStyle(fontSize: 12, color: Colors.white70),
             ),
           ],
         ),

@@ -52,11 +52,7 @@ class _RequestsPageState extends State<RequestsPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) => RequestDetailsPage(
-                      title: request.name,
-                      description: request.description,
-                      tags: request.tags,
-                    ),
+                    builder: (_) => RequestDetailsPage(request: request),
                   ),
                 );
               },

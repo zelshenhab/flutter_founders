@@ -17,7 +17,7 @@ class InvestmentFileUpload extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -36,7 +36,7 @@ class InvestmentFileUpload extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Text(
-                file != null ? file!.path.split("/").last : 'Загрузить файл',
+                file != null ? file!.path.split("/").last : 'Добавить файл в формате PDF',
                 style: TextStyle(
                   color: file != null ? Colors.white : Colors.white.withOpacity(0.5),
                 ),

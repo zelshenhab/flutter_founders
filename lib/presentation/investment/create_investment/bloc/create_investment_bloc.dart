@@ -1,4 +1,3 @@
-// lib/presentation/investment/create_investment/bloc/create_investment_bloc.dart
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,13 +12,15 @@ class CreateInvestmentBloc extends Bloc<CreateInvestmentEvent, CreateInvestmentS
     on<UpdatePaybackPeriod>((event, emit) => emit(state.copyWith(period: event.period)));
     on<UpdateCountry>((event, emit) => emit(state.copyWith(country: event.country)));
     on<UpdateAdditional>((event, emit) => emit(state.copyWith(additional: event.additional)));
-    on<UploadFile>((event, emit) {
-      final updatedDocs = Map<String, File>.from(state.documents);
-      updatedDocs[event.type] = event.file;
-      emit(state.copyWith(documents: updatedDocs));
-    });
+    on<UploadFile>(_onUploadFile);
     on<UpdateTextField>(_onUpdateTextField);
     on<SubmitInvestment>(_onSubmit);
+  }
+
+  void _onUploadFile(UploadFile event, Emitter<CreateInvestmentState> emit) {
+    final updatedDocs = Map<String, File>.from(state.documents);
+    updatedDocs[event.type] = event.file;
+    emit(state.copyWith(documents: updatedDocs));
   }
 
   void _onUpdateTextField(UpdateTextField event, Emitter<CreateInvestmentState> emit) {
@@ -47,7 +48,25 @@ class CreateInvestmentBloc extends Bloc<CreateInvestmentEvent, CreateInvestmentS
 
   FutureOr<void> _onSubmit(SubmitInvestment event, Emitter<CreateInvestmentState> emit) async {
     emit(state.copyWith(isSubmitting: true, isSuccess: false, isFailure: false));
-    await Future.delayed(const Duration(seconds: 2));
-    emit(state.copyWith(isSubmitting: false, isSuccess: true));
+
+    // Validate text fields
+    final allFieldsFilled = state.title.trim().isNotEmpty &&
+        state.description.trim().isNotEmpty &&
+        state.amount.trim().isNotEmpty &&
+        state.period.trim().isNotEmpty &&
+        state.country.trim().isNotEmpty;
+
+    // Validate that all 3 required docs are uploaded
+    final allDocsUploaded = state.documents.containsKey('doc1') &&
+        state.documents.containsKey('doc2') &&
+        state.documents.containsKey('doc3');
+
+    await Future.delayed(const Duration(seconds: 2)); // Simulate network/API delay
+
+    if (allFieldsFilled && allDocsUploaded) {
+      emit(state.copyWith(isSubmitting: false, isSuccess: true, isFailure: false));
+    } else {
+      emit(state.copyWith(isSubmitting: false, isSuccess: false, isFailure: true));
+    }
   }
 }

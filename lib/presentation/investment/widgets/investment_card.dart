@@ -28,14 +28,16 @@ class InvestmentCard extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(16),
         child: Container(
+          width: 50, // ✅ full-width card
+          padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: const Color(0xFF2C2C2E),
+            color: const Color(0xFF2C2C2E), // Dark gray card
             borderRadius: BorderRadius.circular(16),
           ),
-          padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Title
               Text(
                 title,
                 style: const TextStyle(
@@ -45,10 +47,15 @@ class InvestmentCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 12),
+
+              // Info rows
               _buildInfoRow('Объём привлекаемых средств', amount),
               _buildInfoRow('Срок окупаемости', period),
               _buildInfoRow('Страна реализации', location),
+
               const SizedBox(height: 12),
+
+              // Tag Button
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                 decoration: BoxDecoration(
@@ -77,14 +84,8 @@ class InvestmentCard extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
-            label,
-            style: const TextStyle(color: Colors.white60, fontSize: 13),
-          ),
-          Text(
-            value,
-            style: const TextStyle(color: Colors.white, fontSize: 13),
-          ),
+          Text(label, style: const TextStyle(color: Colors.white60, fontSize: 13)),
+          Text(value, style: const TextStyle(color: Colors.white, fontSize: 13)),
         ],
       ),
     );

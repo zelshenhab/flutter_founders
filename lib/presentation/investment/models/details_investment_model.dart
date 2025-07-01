@@ -4,9 +4,9 @@ class DetailsInvestmentModel {
   final String period;
   final String location;
   final String description;
-  final List<String> files; // ["Бизнес план.pdf", "Финансовая модель.pdf"]
+  final List<String> files; 
   final String managerName;
-  final String managerImage;
+  final String managerImage; 
   final List<String> managerTags;
 
   const DetailsInvestmentModel({

@@ -1,24 +1,19 @@
-// lib/presentation/investment/create_investment/create_investment_page.dart
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_founders/presentation/investment/create_investment/bloc/create_investment_bloc.dart';
 import 'package:flutter_founders/presentation/investment/create_investment/bloc/create_investment_event.dart';
 import 'package:flutter_founders/presentation/investment/create_investment/bloc/create_investment_state.dart';
 import 'package:flutter_founders/presentation/investment/create_investment/widgets/additional_investment_textField.dart';
+import 'package:flutter_founders/presentation/investment/create_investment/widgets/investment_submit_button.dart';
 import 'package:flutter_founders/presentation/investment/create_investment/widgets/investment_text_field.dart';
 import 'package:flutter_founders/presentation/investment/create_investment/widgets/investment_file_upload.dart';
-import 'package:flutter_founders/presentation/requests/create_request/widgets/submit_button.dart';
 
 class CreateInvestmentPage extends StatelessWidget {
   const CreateInvestmentPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => CreateInvestmentBloc(),
-      child: const _CreateInvestmentForm(),
-    );
+    return const _CreateInvestmentForm(); // No BlocProvider here
   }
 }
 
@@ -49,14 +44,14 @@ class _CreateInvestmentForm extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 InvestmentTextField(
-                  label: 'Название',
+                  label: 'Название инвестиции',
                   hintText: 'Введите название',
                   initialValue: state.title,
                   onChanged: (value) => context.read<CreateInvestmentBloc>().add(
                         UpdateTextField(fieldKey: 'title', value: value),
                       ),
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 10),
                 InvestmentTextField(
                   label: 'Описание',
                   hintText: 'Введите описание',
@@ -67,7 +62,7 @@ class _CreateInvestmentForm extends StatelessWidget {
                         UpdateTextField(fieldKey: 'description', value: value),
                       ),
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 10),
                 InvestmentTextField(
                   label: 'Сумма',
                   hintText: 'Введите сумму',
@@ -76,7 +71,7 @@ class _CreateInvestmentForm extends StatelessWidget {
                         UpdateTextField(fieldKey: 'amount', value: value),
                       ),
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 10),
                 InvestmentTextField(
                   label: 'Срок окупаемости',
                   hintText: 'Введите срок в месяцах',
@@ -85,7 +80,7 @@ class _CreateInvestmentForm extends StatelessWidget {
                         UpdateTextField(fieldKey: 'period', value: value),
                       ),
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 10),
                 InvestmentTextField(
                   label: 'Страна',
                   hintText: 'Введите страну',
@@ -94,18 +89,34 @@ class _CreateInvestmentForm extends StatelessWidget {
                         UpdateTextField(fieldKey: 'country', value: value),
                       ),
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 10),
                 InvestmentFileUpload(
-                  label: 'Документ 1',
+                  label: 'Бизнес-план',
                   file: state.documents['doc1'],
                   onUpload: () {
                     // implement file picking logic
                   },
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 10),
+                InvestmentFileUpload(
+                  label: 'Финансовая модель',
+                  file: state.documents['doc2'],
+                  onUpload: () {
+                    // implement file picking logic
+                  },
+                ),
+                const SizedBox(height: 10),
+                InvestmentFileUpload(
+                  label: 'Презентация',
+                  file: state.documents['doc3'],
+                  onUpload: () {
+                    // implement file picking logic
+                  },
+                ),
+                const SizedBox(height: 10),
                 AdditionalInvestmentTextField(),
-                const SizedBox(height: 32),
-                SubmitButton(),
+                const SizedBox(height: 20),
+                InvestmentSubmitButton(),
               ],
             ),
           );

@@ -6,7 +6,7 @@ import 'bloc/investment_bloc.dart';
 import 'bloc/investment_event.dart';
 import 'bloc/investment_state.dart';
 import 'widgets/investment_card.dart';
-import 'package:flutter_founders/presentation/investment/investment_details/investment_details.dart';
+import 'investment_details/investment_details.dart';
 
 class InvestmentPage extends StatefulWidget {
   const InvestmentPage({super.key});
@@ -34,6 +34,7 @@ class _InvestmentPageState extends State<InvestmentPage> {
           );
         } else if (state is InvestmentLoaded) {
           return ListView.builder(
+            padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
             itemCount: state.investments.length,
             itemBuilder: (context, index) {
               final inv = state.investments[index];
@@ -44,40 +45,32 @@ class _InvestmentPageState extends State<InvestmentPage> {
                 location: inv.location,
                 tag: inv.tag,
                 tagColor: Color(inv.tagColor),
-onTap: () {
-  final detailsModel = DetailsInvestmentModel(
-    title: inv.title,
-    amount: inv.amount,
-    period: inv.period,
-    location: inv.location,
-    description: 'هذا وصف تجريبي للاستثمار رقم ${index + 1}.\nيمكن استبداله لاحقًا من خلال API.',
-    files: [
-      'Бизнес план.pdf',
-      'Финансовая модель.pdf',
-      'Презентация.pdf',
-    ],
-    managerName: 'Pavel Glotov',
-    managerImage: 'https://via.placeholder.com/150',
-    managerTags: ['Маркетинг', 'Логистика', 'Управление'],
-  );
+                onTap: () {
+                  final detailsModel = DetailsInvestmentModel(
+                    title: inv.title,
+                    amount: inv.amount,
+                    period: inv.period,
+                    location: inv.location,
+                    description: 'هذا وصف تجريبي للاستثمار رقم ${index + 1}.',
+                    files: ['Бизнес план.pdf', 'Финансовая модель.pdf'],
+                    managerName: 'Pavel Glotov',
+                    managerImage: 'https://via.placeholder.com/150',
+                    managerTags: ['Маркетинг', 'Логистика', 'Управление'],
+                  );
 
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (_) => InvestmentDetailsPage(investment: detailsModel),
-    ),
-  );
-}
-,
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => InvestmentDetailsPage(investment: detailsModel),
+                    ),
+                  );
+                },
               );
             },
           );
         } else if (state is InvestmentError) {
           return Center(
-            child: Text(
-              state.message,
-              style: const TextStyle(color: Colors.red),
-            ),
+            child: Text(state.message, style: const TextStyle(color: Colors.red)),
           );
         } else {
           return const SizedBox();

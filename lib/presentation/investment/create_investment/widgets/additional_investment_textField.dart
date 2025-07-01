@@ -15,7 +15,7 @@ class AdditionalInvestmentTextField extends StatelessWidget {
        final additionalText = state.additional;
 
         return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+          padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -34,7 +34,7 @@ class AdditionalInvestmentTextField extends StatelessWidget {
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.grey.shade900,
-                  hintText: 'Добавьте описание или детали',
+                  hintText: 'Необязательное поле',
                   hintStyle: TextStyle(color: Colors.white.withOpacity(0.4)),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),

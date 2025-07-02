@@ -54,7 +54,7 @@ class _CreateInvestmentForm extends StatelessWidget {
                 const SizedBox(height: 10),
                 InvestmentTextField(
                   label: 'Описание',
-                  hintText: 'Введите описание',
+                  hintText: 'Минимум 120 символов',
                   minLines: 3,
                   maxLines: 5,
                   initialValue: state.description,

@@ -8,7 +8,7 @@ import 'package:flutter_founders/presentation/requests/bloc/requests_bloc.dart';
 import 'package:flutter_founders/presentation/requests/bloc/requests_event.dart';
 import 'package:flutter_founders/presentation/requests/create_request/create_request_page.dart';
 import 'package:flutter_founders/presentation/shared_widgets/shared_app_bar.dart';
-import 'home_tab_bar_page.dart';
+import 'home_tab_bar_page.dart'; // تحتوي على Запросы и Инвестиции
 
 class MainNavigationPage extends StatefulWidget {
   const MainNavigationPage({super.key});

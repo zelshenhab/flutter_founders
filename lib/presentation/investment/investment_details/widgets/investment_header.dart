@@ -1,4 +1,3 @@
-// lib/presentation/investment/investment_details/widgets/investment_header.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_founders/presentation/investment/models/details_investment_model.dart';
 
@@ -12,11 +11,7 @@ class InvestmentHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Инвестиция',
-          style: TextStyle(color: Colors.white70, fontSize: 14),
-        ),
-        const SizedBox(height: 8),
+        // Investment title
         Text(
           model.title,
           style: const TextStyle(
@@ -25,40 +20,51 @@ class InvestmentHeader extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: 16),
-        _InvestmentInfoCard(model: model),
+        const SizedBox(height: 20),
+
+        // Main card container
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: const Color.fromARGB(255, 23, 23, 23),
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _InfoRow(label: 'Объём привлекаемых средств', value: model.amount),
+              const SizedBox(height: 14),
+              _InfoRow(label: 'Срок окупаемости', value: model.period),
+              const SizedBox(height: 14),
+              _InfoRow(label: 'Страна реализации', value: model.location),
+              const SizedBox(height: 14),
+
+              _FileBlock(label: 'Бизнес-план', fileName: model.files.isNotEmpty ? model.files[0] : '—'),
+              const SizedBox(height: 14),
+              _FileBlock(label: 'Финансовая модель', fileName: model.files.length > 1 ? model.files[1] : '—'),
+              const SizedBox(height: 14),
+              _FileBlock(label: 'Презентация', fileName: model.files.length > 2 ? model.files[2] : '—'),
+            ],
+          ),
+        ),
+
+        const SizedBox(height: 12),
+
+        // Like and Save buttons (outside the container)
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: const [
+            _IconButton(icon: Icons.favorite_border),
+            _IconButton(icon: Icons.bookmark_border),
+          ],
+        ),
       ],
     );
   }
 }
 
-class _InvestmentInfoCard extends StatelessWidget {
-  final DetailsInvestmentModel model;
-
-  const _InvestmentInfoCard({required this.model});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.grey[900],
-        borderRadius: BorderRadius.circular(16),
-      ),
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _InfoRow(label: 'Объём привлекаемых средств', value: model.amount),
-          const SizedBox(height: 12),
-          _InfoRow(label: 'Срок окупаемости', value: model.period),
-          const SizedBox(height: 12),
-          _InfoRow(label: 'Страна реализации', value: model.location),
-        ],
-      ),
-    );
-  }
-}
-
+// Info section
 class _InfoRow extends StatelessWidget {
   final String label;
   final String value;
@@ -67,19 +73,73 @@ class _InfoRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RichText(
-      text: TextSpan(
-        style: const TextStyle(color: Colors.white),
-        children: [
-          TextSpan(
-              text: '$label\n',
-              style: const TextStyle(fontSize: 14, color: Colors.white70)),
-          TextSpan(
-              text: value,
-              style: const TextStyle(
-                  fontSize: 16, fontWeight: FontWeight.bold)),
-        ],
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(label, style: const TextStyle(fontSize: 13, color: Colors.white)),
+        const SizedBox(height: 4),
+        Text(value, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
+      ],
+    );
+  }
+}
+
+// File download blocks
+class _FileBlock extends StatelessWidget {
+  final String label;
+  final String fileName;
+
+  const _FileBlock({required this.label, required this.fileName});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(label, style: const TextStyle(color: Colors.white, fontSize: 13)),
+        const SizedBox(height: 6),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+          decoration: BoxDecoration(
+            color: const Color.fromARGB(255, 137, 136, 136),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Text(
+            fileName,
+            style: const TextStyle(color: Colors.black, fontSize: 14),
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+// Heart/Bookmark button
+class _IconButton extends StatelessWidget {
+  final IconData icon;
+
+  const _IconButton({required this.icon});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4), // internal spacing
+      child: InkWell(
+        borderRadius: BorderRadius.circular(12),
+        onTap: () {
+          // TODO: Handle tap
+        },
+        child: SizedBox(
+          width: 25,
+          height: 25,
+          child: Icon(
+            icon,
+            color: Colors.white,
+            size: 33,
+          ),
+        ),
       ),
     );
   }
 }
+

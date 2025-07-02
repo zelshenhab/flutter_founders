@@ -14,7 +14,7 @@ class HomeTabBarPage extends StatelessWidget {
       initialIndex: 0,
       child: Builder(
         builder: (context) {
-          final TabController tabController = DefaultTabController.of(context)!;
+          final TabController tabController = DefaultTabController.of(context);
 
           // Update notifier whenever tab changes
           tabController.addListener(() {

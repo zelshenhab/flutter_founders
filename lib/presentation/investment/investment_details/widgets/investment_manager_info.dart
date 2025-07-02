@@ -59,7 +59,7 @@ class InvestmentManagerInfo extends StatelessWidget {
                                     horizontal: 10, vertical: 4),
                                 decoration: BoxDecoration(
                                   color: Colors.grey[800],
-                                  borderRadius: BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(40),
                                 ),
                                 child: Text(
                                   tag,

@@ -1,11 +1,16 @@
 // lib/presentation/investment/bloc/investment_event.dart
-import 'package:equatable/equatable.dart';
 
-abstract class InvestmentEvent extends Equatable {
+import '../models/investment_model.dart';
+
+abstract class InvestmentEvent {
   const InvestmentEvent();
-
-  @override
-  List<Object> get props => [];
 }
 
-class LoadInvestmentsEvent extends InvestmentEvent {}
+class LoadInvestmentsEvent extends InvestmentEvent {
+  const LoadInvestmentsEvent();
+}
+
+class AddInvestmentEvent extends InvestmentEvent {
+  final InvestmentModel investment;
+  const AddInvestmentEvent(this.investment);
+}

@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_founders/presentation/investment/create_investment/bloc/create_investment_bloc.dart';
@@ -93,26 +96,38 @@ class _CreateInvestmentForm extends StatelessWidget {
                 InvestmentFileUpload(
                   label: 'Бизнес-план',
                   file: state.documents['doc1'],
-                  onUpload: () {
-                    // implement file picking logic
-                  },
-                ),
+                   onUpload: () async {
+    final result = await FilePicker.platform.pickFiles();
+    if (result != null && result.files.single.path != null) {
+      final file = File(result.files.single.path!);
+      context.read<CreateInvestmentBloc>().add(UploadFile(type: 'doc1', file: file));
+    }
+  },
+),
                 const SizedBox(height: 10),
                 InvestmentFileUpload(
                   label: 'Финансовая модель',
                   file: state.documents['doc2'],
-                  onUpload: () {
-                    // implement file picking logic
-                  },
-                ),
+                   onUpload: () async {
+    final result = await FilePicker.platform.pickFiles();
+    if (result != null && result.files.single.path != null) {
+      final file = File(result.files.single.path!);
+      context.read<CreateInvestmentBloc>().add(UploadFile(type: 'doc2', file: file));
+    }
+  },
+),
                 const SizedBox(height: 10),
                 InvestmentFileUpload(
                   label: 'Презентация',
                   file: state.documents['doc3'],
-                  onUpload: () {
-                    // implement file picking logic
-                  },
-                ),
+                   onUpload: () async {
+    final result = await FilePicker.platform.pickFiles();
+    if (result != null && result.files.single.path != null) {
+      final file = File(result.files.single.path!);
+      context.read<CreateInvestmentBloc>().add(UploadFile(type: 'doc3', file: file));
+    }
+  },
+),
                 const SizedBox(height: 10),
                 AdditionalInvestmentTextField(),
                 const SizedBox(height: 20),

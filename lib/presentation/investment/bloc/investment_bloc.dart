@@ -1,12 +1,13 @@
 // lib/presentation/investment/bloc/investment_bloc.dart
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../models/investment_model.dart';
 import 'investment_event.dart';
 import 'investment_state.dart';
-import '../models/investment_model.dart';
 
 class InvestmentBloc extends Bloc<InvestmentEvent, InvestmentState> {
   InvestmentBloc() : super(InvestmentInitial()) {
     on<LoadInvestmentsEvent>(_onLoadInvestments);
+    on<AddInvestmentEvent>(_onAddInvestment); // 👈 new event handler
   }
 
   Future<void> _onLoadInvestments(
@@ -38,6 +39,18 @@ class InvestmentBloc extends Bloc<InvestmentEvent, InvestmentState> {
       emit(InvestmentLoaded(mockData));
     } catch (e) {
       emit(const InvestmentError('Ошибка загрузки инвестиций'));
+    }
+  }
+
+  void _onAddInvestment(
+    AddInvestmentEvent event,
+    Emitter<InvestmentState> emit,
+  ) {
+    if (state is InvestmentLoaded) {
+      final currentState = state as InvestmentLoaded;
+      final updatedList = List<InvestmentModel>.from(currentState.investments)
+        ..add(event.investment);
+      emit(InvestmentLoaded(updatedList));
     }
   }
 }

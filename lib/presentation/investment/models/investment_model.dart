@@ -6,7 +6,13 @@ class InvestmentModel {
   final String location;
   final String tag;
   final int tagColor;
-  
+
+  // Optional: These will be used in InvestmentDetailsPage
+  final String description;
+  final List<String> files;
+  final String managerName;
+  final String managerImage;
+  final List<String> managerTags;
 
   InvestmentModel({
     required this.title,
@@ -15,5 +21,10 @@ class InvestmentModel {
     required this.location,
     required this.tag,
     required this.tagColor,
+    this.description = '',
+    this.files = const [],
+    this.managerName = '',
+    this.managerImage = '',
+    this.managerTags = const [],
   });
 }

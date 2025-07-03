@@ -5,6 +5,7 @@ import 'package:flutter_founders/presentation/investment/bloc/investment_event.d
 import 'package:flutter_founders/presentation/profile/profile_screen.dart';
 import 'package:flutter_founders/presentation/requests/bloc/requests_bloc.dart';
 import 'package:flutter_founders/presentation/requests/bloc/requests_event.dart';
+import 'package:flutter_founders/presentation/search/search_page.dart';
 import 'home_tab_bar_page.dart';
 
 class MainNavigationPage extends StatefulWidget {
@@ -20,7 +21,7 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
 
   late final List<Widget> _pages = [
     HomeTabBarPage(tabIndexNotifier: _tabIndexNotifier),
-    const Placeholder(),
+    const SearchPage(),
     const Placeholder(),
     const ProfileScreen(),
   ];

@@ -1,6 +1,7 @@
 // lib/presentation/profile/widgets/partners_list.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_founders/presentation/profile/models/partner_model.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class PartnersList extends StatelessWidget {
   final List<PartnerModel> partners;
@@ -10,60 +11,75 @@ class PartnersList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          'Партнёры',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: Colors.white,
-          ),
-        ),
-        const SizedBox(height: 12),
-        ...partners.map((partner) {
-          return Container(
-            margin: const EdgeInsets.only(bottom: 12),
-            padding: const EdgeInsets.all(12),
-            decoration: BoxDecoration(
-              color: const Color(0xFF2C2C2E),
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Row(
-              children: [
-                CircleAvatar(
-                  radius: 24,
-                  backgroundImage: AssetImage(partner.avatarUrl),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        partner.name,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white,
-                        ),
-                      ),
-                      Text(
-                        partner.subtitle,
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: Colors.white70,
-                        ),
-                      ),
-                    ],
+      children: partners.map((partner) {
+        return Column(
+          children: [
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 12),
+              child: Row(
+                children: [
+                  // Avatar
+                  CircleAvatar(
+                    radius: 24,
+                    backgroundImage: AssetImage(partner.avatarUrl),
                   ),
-                ),
-                const Icon(Icons.chat_bubble_outline, color: Colors.white70),
-              ],
+                  const SizedBox(width: 12),
+
+                  // Info
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Name
+                        Text(
+                          partner.name,
+                          style: GoogleFonts.inriaSans(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const SizedBox(height: 2),
+
+                        // Company
+                        Text(
+                          partner.company,
+                          style: GoogleFonts.inriaSans(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w500,
+                            color: const Color(0xFFAF925D), // نفس لون الشركة الرئيسي
+                          ),
+                        ),
+
+                        // Subtitle
+                        Text(
+                          partner.subtitle,
+                          style: GoogleFonts.inriaSans(
+                            fontSize: 12,
+                            color: Colors.white70,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(width: 8),
+
+                  // Chat icon
+                  const Icon(Icons.chat_bubble_outline, color: Colors.white70),
+                ],
+              ),
             ),
-          );
-        }).toList(),
-      ],
+
+            // Divider
+            Container(
+              height: 1,
+              color: Colors.white12,
+              margin: const EdgeInsets.symmetric(vertical: 4),
+            ),
+          ],
+        );
+      }).toList(),
     );
   }
 }

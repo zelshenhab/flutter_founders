@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_founders/presentation/investment/investment_page.dart';
 import 'package:flutter_founders/presentation/requests/requsets_page.dart';
+import 'package:flutter_founders/presentation/requests/create_request/create_request_page.dart';
+import 'package:flutter_founders/presentation/investment/create_investment/create_investment_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_founders/presentation/investment/create_investment/bloc/create_investment_bloc.dart';
+import 'package:flutter_founders/presentation/shared_widgets/shared_app_bar.dart';
 
 class HomeTabBarPage extends StatelessWidget {
   final ValueNotifier<int> tabIndexNotifier;
@@ -16,7 +21,6 @@ class HomeTabBarPage extends StatelessWidget {
         builder: (context) {
           final TabController tabController = DefaultTabController.of(context);
 
-          // Update notifier whenever tab changes
           tabController.addListener(() {
             if (!tabController.indexIsChanging) {
               tabIndexNotifier.value = tabController.index;
@@ -25,6 +29,28 @@ class HomeTabBarPage extends StatelessWidget {
 
           return Column(
             children: [
+              // ✅ AppBar هنا فقط
+              SharedAppBar(
+                onCreatePressed: () {
+                  final tabIndex = tabIndexNotifier.value;
+                  if (tabIndex == 0) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (_) => const CreateRequestPage()),
+                    );
+                  } else {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => BlocProvider(
+                          create: (_) => CreateInvestmentBloc(),
+                          child: const CreateInvestmentPage(),
+                        ),
+                      ),
+                    );
+                  }
+                },
+              ),
               const TabBar(
                 indicator: UnderlineTabIndicator(
                   borderSide: BorderSide(width: 2, color: Colors.white),

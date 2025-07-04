@@ -59,6 +59,7 @@ class RequestCard extends StatelessWidget {
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
+                          fontFamily: 'InriaSans',
                         ),
                       ),
                       Text(
@@ -67,6 +68,7 @@ class RequestCard extends StatelessWidget {
                           color: Color(0xFFAF925D),
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
+                          fontFamily: 'InriaSans',
                         ),
                       ),
                     ],
@@ -93,6 +95,7 @@ class RequestCard extends StatelessWidget {
                             fontSize: 11,
                             color: Colors.white,
                             fontWeight: FontWeight.w500,
+                            fontFamily: 'InriaSans',
                           ),
                         ),
                       ),
@@ -106,7 +109,7 @@ class RequestCard extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 12),
-            Text(description, style: const TextStyle(color: Colors.white)),
+            Text(description, style: const TextStyle(color: Colors.white, fontFamily: 'InriaSans')),
             const SizedBox(height: 12),
             Wrap(
               spacing: 6,
@@ -125,7 +128,7 @@ class RequestCard extends StatelessWidget {
                       child: Text(
                         tag,
                         style:
-                            const TextStyle(color: Colors.white, fontSize: 12),
+                            const TextStyle(color: Colors.white, fontSize: 12, fontFamily: 'InriaSans'),
                       ),
                     ),
                   )

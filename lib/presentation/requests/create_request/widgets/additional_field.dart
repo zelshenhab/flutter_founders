@@ -14,15 +14,16 @@ class AdditionalField extends StatelessWidget {
             color: Colors.white,
             fontSize: 14,
             fontWeight: FontWeight.w600,
+            fontFamily: 'InriaSans',
           ),
         ),
         const SizedBox(height: 8),
         TextField(
-          style: const TextStyle(color: Colors.white),
+          style: const TextStyle(color: Colors.white, fontFamily: 'InriaSans'),
           maxLines: 4,
           decoration: InputDecoration(
             hintText: 'Необязательное поле',
-            hintStyle: const TextStyle(color: Colors.grey),
+            hintStyle: const TextStyle(color: Colors.grey, fontFamily: 'InriaSans'),
             filled: true,
             fillColor: const Color.fromARGB(255, 40, 40, 42),
             contentPadding: const EdgeInsets.symmetric(

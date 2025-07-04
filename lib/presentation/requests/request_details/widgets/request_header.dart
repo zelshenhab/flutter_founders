@@ -43,6 +43,7 @@ class RequestHeader extends StatelessWidget {
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
+                  fontFamily: 'InriaSans',
                 ),
               ),
               Text(
@@ -51,6 +52,7 @@ class RequestHeader extends StatelessWidget {
                   fontSize: 13,
                   fontWeight: FontWeight.w400,
                   color: Color(0xFFAF925D),
+                  fontFamily: 'InriaSans',
                 ),
               ),
             ],
@@ -64,7 +66,7 @@ class RequestHeader extends StatelessWidget {
           children: [
             Text(
               time,
-              style: const TextStyle(fontSize: 12, color: Colors.white70),
+              style: const TextStyle(fontSize: 12, color: Colors.white70, fontFamily: 'InriaSans'),
             ),
           ],
         ),

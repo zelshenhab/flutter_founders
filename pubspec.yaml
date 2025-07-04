@@ -67,6 +67,22 @@ flutter:
     - assets/icons/arrow_left.svg
     - assets/icons/checkbox_checked.svg
     - assets/icons/checkbox_unchecked.svg
+    - assets/pngs/attach.png
+    - assets/pngs/chat-profile.png
+    - assets/pngs/chat.png
+    - assets/pngs/edit-profile.png
+    - assets/pngs/filter.png
+    - assets/pngs/heart.png
+    - assets/pngs/home-highlighted.png
+    - assets/pngs/home.png
+    - assets/pngs/notification.png
+    - assets/pngs/profile-highlighted.png
+    - assets/pngs/profile.png
+    - assets/pngs/save.png
+    - assets/pngs/search-highlighted.png
+    - assets/pngs/search.png
+    - assets/pngs/settings.png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

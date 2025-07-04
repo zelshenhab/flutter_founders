@@ -20,6 +20,7 @@ class DescriptionField extends StatelessWidget {
                 color: Colors.white,
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
+                fontFamily: 'InriaSans'
               ),
             ),
             const SizedBox(height: 8),
@@ -27,11 +28,11 @@ class DescriptionField extends StatelessWidget {
               onChanged: (value) => context.read<CreateRequestBloc>().add(
                 DescriptionChanged(value),
               ),
-              style: const TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white, fontFamily: 'InriaSans'),
               maxLines: 5,
               decoration: InputDecoration(
                 hintText: 'Минимум 120 символов',
-                hintStyle: const TextStyle(color: Colors.grey),
+                hintStyle: const TextStyle(color: Colors.grey, fontFamily: 'InriaSans'),
                 filled: true,
                 fillColor: const Color.fromARGB(255, 40, 40, 42),
                 contentPadding: const EdgeInsets.symmetric(

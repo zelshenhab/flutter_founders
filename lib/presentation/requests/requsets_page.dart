@@ -30,7 +30,7 @@ class _RequestsPageState extends State<RequestsPage> {
           return const Center(
             child: Text(
               'No requests available',
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(color: Colors.white, fontFamily: 'InriaSans'),
             ),
           );
         }

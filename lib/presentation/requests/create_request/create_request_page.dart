@@ -22,7 +22,7 @@ class CreateRequestPage extends StatelessWidget {
           automaticallyImplyLeading: true,
           title: const Text(
             'Создать запрос',
-            style: TextStyle(color: Colors.white, fontSize: 24),
+            style: TextStyle(color: Colors.white, fontSize: 24, fontFamily: 'InriaSans'),
           ),
         ),
         body: SafeArea(

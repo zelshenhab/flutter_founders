@@ -20,16 +20,17 @@ class TitleField extends StatelessWidget {
                 color: Colors.white,
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
+                fontFamily: 'InriaSans',
               ),
             ),
             const SizedBox(height: 8),
             TextField(
               onChanged: (value) =>
                   context.read<CreateRequestBloc>().add(TitleChanged(value)),
-              style: const TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white, fontFamily: 'InriaSans'),
               decoration: InputDecoration(
                 hintText: 'Минимум 30 символов',
-                hintStyle: const TextStyle(color: Colors.grey),
+                hintStyle: const TextStyle(color: Colors.grey, fontFamily: 'InriaSans'),
                 filled: true,
                 fillColor: const Color.fromARGB(255, 40, 40, 42),
                 contentPadding: const EdgeInsets.symmetric(

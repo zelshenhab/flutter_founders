@@ -62,6 +62,7 @@ class SubmitButton extends StatelessWidget {
                           color: Colors.white,
                           fontSize: 16,
                           fontWeight: FontWeight.w600,
+                          fontFamily: 'InriaSans'
                         ),
                       ),
               ),

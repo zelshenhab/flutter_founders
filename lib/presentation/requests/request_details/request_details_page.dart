@@ -17,7 +17,7 @@ class RequestDetailsPage extends StatelessWidget {
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: const Text('Запрос', style: TextStyle(color: Colors.white)),
+        title: const Text('Запрос', style: TextStyle(color: Colors.white, fontFamily: 'InriaSans')),
         iconTheme: const IconThemeData(color: Colors.white),
       ),
       body: SingleChildScrollView(

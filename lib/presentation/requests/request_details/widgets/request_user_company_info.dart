@@ -12,7 +12,7 @@
         children: const [
           Text(
             'Информация о пользователе',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontFamily: 'InriaSans'),
           ),
           SizedBox(height: 8),
           RequestDescriptionCard(
@@ -22,7 +22,7 @@
           SizedBox(height: 16),
           Text(
             'Информация о компании',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontFamily: 'InriaSans'),
           ),
           SizedBox(height: 8),
           RequestDescriptionCard(

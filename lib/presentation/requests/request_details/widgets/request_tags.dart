@@ -30,6 +30,7 @@ class RequestTags extends StatelessWidget {
                 color: Colors.white,
                 fontSize: 11,
                 fontWeight: FontWeight.w500,
+                fontFamily: 'InriaSans',
               ),
             ),
           );

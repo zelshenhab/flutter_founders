@@ -28,25 +28,16 @@ class ProfileCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Name + flag
-                Row(
-                  children: [
-                    Expanded(
-                      child: Text(
-                        profile.name,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                    Text(
-                      profile.countryFlag,
-                      style: const TextStyle(fontSize: 16),
-                    ),
-                  ],
+                // Name with flag inline
+                Text(
+                  '${profile.name} ${profile.countryFlag}',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    fontFamily: 'InriaSans',
+                  ),
+                  overflow: TextOverflow.ellipsis,
                 ),
                 const SizedBox(height: 2),
 
@@ -56,6 +47,7 @@ class ProfileCard extends StatelessWidget {
                   style: const TextStyle(
                     fontSize: 14,
                     color: Colors.grey,
+                    fontFamily: 'InriaSans',
                   ),
                 ),
                 const SizedBox(height: 8),
@@ -118,41 +110,43 @@ class ProfileCard extends StatelessWidget {
     );
   }
 
+  // 🎨 Main tag colors
   Color _getTagColor(String tag) {
-  switch (tag.toLowerCase()) {
-    case 'it':
-      return Colors.blueAccent;
-    case 'маркетинг':
-      return Colors.redAccent;
-    case 'бизнес модели':
-      return Colors.deepPurple;
-    case 'недвижимость':
-      return Colors.brown;
-    case 'финансы':
-      return Colors.green;
-    case 'медиа':
-      return Colors.orange;
-    case 'консалтинг':
-      return Colors.teal;
-    case 'здравоохранение':
-      return Colors.pink;
-    case 'логистика':
-      return Colors.amber;
-    case 'юриспруденция':
-      return Colors.indigo;
-    case 'образование':
-      return Colors.lightBlueAccent;
-    case 'услуги':
-      return Colors.cyan;
-    case 'производство':
-      return Colors.grey;
-    case 'вэд':
-      return Colors.deepOrangeAccent;
-    default:
-      return Colors.grey.shade800;
+    switch (tag.toLowerCase()) {
+      case 'it':
+        return Colors.blueAccent;
+      case 'маркетинг':
+        return Colors.redAccent;
+      case 'бизнес модели':
+        return Colors.deepPurple;
+      case 'недвижимость':
+        return Colors.brown;
+      case 'финансы':
+        return Colors.green;
+      case 'медиа':
+        return Colors.orange;
+      case 'консалтинг':
+        return Colors.teal;
+      case 'здравоохранение':
+        return Colors.pink;
+      case 'логистика':
+        return Colors.amber;
+      case 'юриспруденция':
+        return Colors.indigo;
+      case 'образование':
+        return Colors.lightBlueAccent;
+      case 'услуги':
+        return Colors.cyan;
+      case 'производство':
+        return Colors.grey;
+      case 'вэд':
+        return Colors.deepOrangeAccent;
+      default:
+        return Colors.grey.shade800;
+    }
   }
-}
 
+  // 🎨 Sub-tag colors
   Color _getSubTagColor(String subTag) {
     final lower = subTag.toLowerCase();
 

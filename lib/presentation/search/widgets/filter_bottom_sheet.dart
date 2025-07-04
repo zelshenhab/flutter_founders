@@ -1,7 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:country_picker/country_picker.dart';
+import 'tag_subtags.dart';
 
-class FilterBottomSheet extends StatelessWidget {
+class FilterBottomSheet extends StatefulWidget {
   const FilterBottomSheet({super.key});
+
+  @override
+  State<FilterBottomSheet> createState() => _FilterBottomSheetState();
+}
+
+class _FilterBottomSheetState extends State<FilterBottomSheet> {
+  List<String> selectedCountries = [];
+  List<String> selectedMainTags = [];
+  List<String> selectedSubTags = [];
+  bool isFoundersOnly = false;
+
+  void _resetFilters() {
+    setState(() {
+      selectedCountries = [];
+      selectedMainTags = [];
+      selectedSubTags = [];
+      isFoundersOnly = false;
+    });
+  }
+
+  void _applyFilters() {
+    debugPrint('Applied Filters:\nCountries: $selectedCountries\nTags: $selectedMainTags\nSubTags: $selectedSubTags\nFounders Only: $isFoundersOnly');
+    Navigator.pop(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,99 +41,136 @@ class FilterBottomSheet extends StatelessWidget {
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
           decoration: const BoxDecoration(
-            color: Colors.black,
+            color: Color(0xFF191919),
             borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
           ),
           child: ListView(
             controller: scrollController,
             children: [
-              // Sheet handle
-              Center(
-                child: Container(
-                  width: 40,
-                  height: 4,
-                  margin: const EdgeInsets.only(bottom: 24),
-                  decoration: BoxDecoration(
-                    color: Colors.grey[700],
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                ),
-              ),
-
-              const Text(
-                'Фильтры',
-                style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 24),
-
-              // Mock dropdown
-              const Text(
-                'Выберите страну',
-                style: TextStyle(color: Colors.grey),
-              ),
-              const SizedBox(height: 6),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade900,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: DropdownButtonHideUnderline(
-                  child: DropdownButton<String>(
-                    value: 'Все',
-                    items: const [
-                      DropdownMenuItem(value: 'Все', child: Text('Все')),
-                      DropdownMenuItem(value: '🇪🇺 Европа', child: Text('🇪🇺 Европа')),
-                      DropdownMenuItem(value: '🌍 Мировой', child: Text('🌍 Мировой')),
-                      DropdownMenuItem(value: '🇷🇺 Россия', child: Text('🇷🇺 Россия')),
-                    ],
-                    onChanged: (_) {},
-                    dropdownColor: Colors.grey[900],
-                    style: const TextStyle(color: Colors.white),
-                    iconEnabledColor: Colors.white,
-                  ),
-                ),
-              ),
-
-              const SizedBox(height: 24),
-
-              const Text(
-                'Выберите интересы',
-                style: TextStyle(color: Colors.grey),
-              ),
-              const SizedBox(height: 10),
-
-              Wrap(
-                spacing: 8,
-                runSpacing: 8,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  _buildTag('Разработка'),
-                  _buildTag('Маркетинг'),
-                  _buildTag('Юриспруденция'),
-                  _buildTag('Консалтинг'),
-                  _buildTag('ВЭД'),
-                  _buildTag('ИТ'),
+                  GestureDetector(
+                    onTap: _resetFilters,
+                    child: const Text('Очистить', style: _smallTextStyle),
+                  ),
+                  const Text('Фильтры', style: _headerTextStyle),
+                  GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: const Text('Отменить', style: _smallTextStyle),
+                  ),
                 ],
               ),
-
-              const SizedBox(height: 32),
-
-              // Apply button
+              const SizedBox(height: 24),
+              const Text('Страна', style: _sectionTextStyle),
+              const SizedBox(height: 13),
+              GestureDetector(
+                onTap: _openCountryPicker,
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade900,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          selectedCountries.isEmpty ? 'Выберите' : selectedCountries.join(', '),
+                          style: const TextStyle(color: Color(0xFFDFDFDF), fontSize: 14, fontFamily: 'InriaSans'),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      const Icon(Icons.arrow_drop_down, color: Colors.white),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 30),
+              const Text('Сфера деятельности', style: _sectionTextStyle),
+              const SizedBox(height: 10),
+              ...tagSubTags.entries.map((entry) {
+                final tag = entry.key;
+                final subTags = entry.value;
+                return Theme(
+                  data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+                  child: ExpansionTile(
+                    trailing: SizedBox.shrink(),
+                    backgroundColor: Colors.transparent,
+                    collapsedBackgroundColor: Colors.transparent,
+                    tilePadding: EdgeInsets.zero,
+                    childrenPadding: EdgeInsets.zero,
+                    title: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Transform.rotate(
+                          angle: 3.14,
+                          child: SvgPicture.asset('assets/icons/arrow_left.svg', width: 20, height: 20),
+                        ),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Text(tag, style: _tagTextStyle),
+                        ),
+                        _buildCheckbox(
+                          isChecked: selectedMainTags.contains(tag),
+                          onChanged: () => setState(() {
+                            selectedMainTags.contains(tag)
+                                ? selectedMainTags.remove(tag)
+                                : selectedMainTags.add(tag);
+                          }),
+                        ),
+                      ],
+                    ),
+                    children: subTags.map((subTag) {
+                      return Padding(
+                        padding: const EdgeInsets.only(left: 12.0, right: 8, bottom: 14),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(child: Text(subTag, style: _tagTextStyle)),
+                            _buildCheckbox(
+                              isChecked: selectedSubTags.contains(subTag),
+                              onChanged: () => setState(() {
+                                selectedSubTags.contains(subTag)
+                                    ? selectedSubTags.remove(subTag)
+                                    : selectedSubTags.add(subTag);
+                              }),
+                            ),
+                          ],
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                );
+              }).toList(),
+              const SizedBox(height: 24),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text('Партнёры фаундерс', style: _sectionTextStyle),
+                  Switch(
+                    value: isFoundersOnly,
+                    onChanged: (val) => setState(() => isFoundersOnly = val),
+                    activeColor: const Color(0xFFAF925D),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 12),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => Navigator.pop(context),
+                  onPressed: _applyFilters,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.greenAccent.shade700,
+                    backgroundColor: const Color(0xFFAF925D),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
                     padding: const EdgeInsets.symmetric(vertical: 16),
                   ),
-                  child: const Text(
-                    'Применить фильтр',
-                    style: TextStyle(color: Colors.white, fontSize: 16),
-                  ),
+                  child: const Text('Применить',
+                      style: TextStyle(color: Colors.black, fontSize: 16, fontFamily: 'InriaSans')),
                 ),
               ),
             ],
@@ -116,17 +180,84 @@ class FilterBottomSheet extends StatelessWidget {
     );
   }
 
-  Widget _buildTag(String label) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-      decoration: BoxDecoration(
-        color: Colors.grey.shade800,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Text(
-        label,
-        style: const TextStyle(color: Colors.white70, fontSize: 14),
+  Widget _buildCheckbox({required bool isChecked, required VoidCallback onChanged}) {
+    return GestureDetector(
+      onTap: onChanged,
+      child: Container(
+        margin: const EdgeInsets.only(left: 8),
+        width: 24,
+        height: 24,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: isChecked ? const Color(0xFFD9D9D9) : Colors.transparent,
+          border: Border.all(color: const Color(0xFFDFDFDF), width: 1.2),
+        ),
+        child: SvgPicture.asset(
+          'assets/icons/checkbox_checked.svg',
+          color: Colors.black,
+          width: 16,
+          height: 16,
+          fit: BoxFit.scaleDown,
+        ),
       ),
     );
   }
+
+  void _openCountryPicker() {
+    showCountryPicker(
+      context: context,
+      showPhoneCode: false,
+      countryListTheme: CountryListThemeData(
+        backgroundColor: Colors.black,
+        textStyle: const TextStyle(color: Colors.white, fontFamily: 'InriaSans'),
+        inputDecoration: const InputDecoration(
+          labelText: 'Поиск страны',
+          labelStyle: TextStyle(color: Colors.white70),
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.white24),
+          ),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: Colors.white),
+          ),
+        ),
+      ),
+      onSelect: (Country country) {
+        setState(() {
+          if (!selectedCountries.contains(country.name)) {
+            selectedCountries.add(country.name);
+          } else {
+            selectedCountries.remove(country.name);
+          }
+        });
+      },
+    );
+  }
 }
+
+const _headerTextStyle = TextStyle(
+  color: Colors.white,
+  fontSize: 20,
+  fontFamily: 'InriaSans',
+  fontWeight: FontWeight.w400,
+  height: 1.0,
+  letterSpacing: -0.03,
+);
+
+const _sectionTextStyle = _headerTextStyle;
+
+const _smallTextStyle = TextStyle(
+  color: Colors.white,
+  fontSize: 15,
+  fontFamily: 'InriaSans',
+  fontWeight: FontWeight.w400,
+  height: 1.22,
+  letterSpacing: -0.03,   
+);
+
+const _tagTextStyle = TextStyle(
+  color: Colors.white,
+  fontSize: 15,
+  fontFamily: 'InriaSans',
+  height: 1.22,
+  letterSpacing: -0.03,
+);

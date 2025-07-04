@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:country_picker/country_picker.dart';
 import 'tag_subtags.dart';
 
@@ -14,6 +13,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
   List<String> selectedCountries = [];
   List<String> selectedMainTags = [];
   List<String> selectedSubTags = [];
+  Set<String> expandedTags = {}; // 👈 Tracks which tags are expanded
   bool isFoundersOnly = false;
 
   void _resetFilters() {
@@ -21,6 +21,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
       selectedCountries = [];
       selectedMainTags = [];
       selectedSubTags = [];
+      expandedTags.clear();
       isFoundersOnly = false;
     });
   }
@@ -93,55 +94,76 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
               ...tagSubTags.entries.map((entry) {
                 final tag = entry.key;
                 final subTags = entry.value;
-                return Theme(
-                  data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
-                  child: ExpansionTile(
-                    trailing: SizedBox.shrink(),
-                    backgroundColor: Colors.transparent,
-                    collapsedBackgroundColor: Colors.transparent,
-                    tilePadding: EdgeInsets.zero,
-                    childrenPadding: EdgeInsets.zero,
-                    title: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Transform.rotate(
-                          angle: 3.14,
-                          child: SvgPicture.asset('assets/icons/arrow_left.svg', width: 20, height: 20),
-                        ),
-                        const SizedBox(width: 8),
-                        Expanded(
-                          child: Text(tag, style: _tagTextStyle),
-                        ),
-                        _buildCheckbox(
-                          isChecked: selectedMainTags.contains(tag),
-                          onChanged: () => setState(() {
-                            selectedMainTags.contains(tag)
-                                ? selectedMainTags.remove(tag)
-                                : selectedMainTags.add(tag);
-                          }),
-                        ),
-                      ],
-                    ),
-                    children: subTags.map((subTag) {
-                      return Padding(
-                        padding: const EdgeInsets.only(left: 12.0, right: 8, bottom: 14),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(child: Text(subTag, style: _tagTextStyle)),
-                            _buildCheckbox(
-                              isChecked: selectedSubTags.contains(subTag),
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 0), // 👈 Space between tags
+                  child: Theme(
+                    data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+                    child: ExpansionTile(
+                      onExpansionChanged: (expanded) {
+                        setState(() {
+                          if (expanded) {
+                            expandedTags.add(tag);
+                          } else {
+                            expandedTags.remove(tag);
+                          }
+                        });
+                      },
+                      trailing: const SizedBox.shrink(),
+                      backgroundColor: Colors.transparent,
+                      collapsedBackgroundColor: Colors.transparent,
+                      tilePadding: EdgeInsets.zero,
+                      childrenPadding: EdgeInsets.zero,
+                      title: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 10),
+                            child: AnimatedRotation(
+                              turns: expandedTags.contains(tag) ? 0.75 : 0.5, // 👈 right → down
+                              duration: const Duration(milliseconds: 200),
+                              child: const Icon(
+                                Icons.arrow_back_ios_new,
+                                size: 20,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Expanded(child: Text(tag, style: _tagTextStyle)),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 1),
+                            child: _buildCheckbox(
+                              isChecked: selectedMainTags.contains(tag),
                               onChanged: () => setState(() {
-                                selectedSubTags.contains(subTag)
-                                    ? selectedSubTags.remove(subTag)
-                                    : selectedSubTags.add(subTag);
+                                selectedMainTags.contains(tag)
+                                    ? selectedMainTags.remove(tag)
+                                    : selectedMainTags.add(tag);
                               }),
                             ),
-                          ],
-                        ),
-                      );
-                    }).toList(),
+                          ),
+                        ],
+                      ),
+                      children: subTags.map((subTag) {
+                        return Padding(
+                          padding: const EdgeInsets.only(top: 15, left: 40, bottom: 15, right: 32),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Expanded(child: Text(subTag, style: _tagTextStyle)),
+                              _buildCheckbox(
+                                isChecked: selectedSubTags.contains(subTag),
+                                onChanged: () => setState(() {
+                                  selectedSubTags.contains(subTag)
+                                      ? selectedSubTags.remove(subTag)
+                                      : selectedSubTags.add(subTag);
+                                }),
+                              ),
+                            ],
+                          ),
+                        );
+                      }).toList(),
+                    ),
                   ),
                 );
               }).toList(),
@@ -169,8 +191,10 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                     ),
                     padding: const EdgeInsets.symmetric(vertical: 16),
                   ),
-                  child: const Text('Применить',
-                      style: TextStyle(color: Colors.black, fontSize: 16, fontFamily: 'InriaSans')),
+                  child: const Text(
+                    'Применить',
+                    style: TextStyle(color: Colors.black, fontSize: 16, fontFamily: 'InriaSans'),
+                  ),
                 ),
               ),
             ],
@@ -192,12 +216,10 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
           color: isChecked ? const Color(0xFFD9D9D9) : Colors.transparent,
           border: Border.all(color: const Color(0xFFDFDFDF), width: 1.2),
         ),
-        child: SvgPicture.asset(
-          'assets/icons/checkbox_checked.svg',
-          color: Colors.black,
-          width: 16,
-          height: 16,
-          fit: BoxFit.scaleDown,
+        child: Icon(
+          Icons.check,
+          size: 16,
+          color: isChecked ? Colors.black : Colors.transparent,
         ),
       ),
     );
@@ -234,6 +256,8 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
   }
 }
 
+// TEXT STYLES
+
 const _headerTextStyle = TextStyle(
   color: Colors.white,
   fontSize: 20,
@@ -251,7 +275,7 @@ const _smallTextStyle = TextStyle(
   fontFamily: 'InriaSans',
   fontWeight: FontWeight.w400,
   height: 1.22,
-  letterSpacing: -0.03,   
+  letterSpacing: -0.03,
 );
 
 const _tagTextStyle = TextStyle(

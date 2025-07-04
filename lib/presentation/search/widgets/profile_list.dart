@@ -21,7 +21,7 @@ class ProfileList extends StatelessWidget {
             return const Center(
               child: Text(
                 'Ничего не найдено',
-                style: TextStyle(color: Colors.grey),
+                style: TextStyle(color: Colors.grey, fontFamily: 'InriaSans'),
               ),
             );
           }

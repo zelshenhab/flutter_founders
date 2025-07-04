@@ -25,7 +25,7 @@ class InvestmentTabBar extends StatelessWidget {
           ),
           labelColor: Colors.white,
           unselectedLabelColor: Colors.grey,
-          labelStyle: TextStyle(fontWeight: FontWeight.w600),
+          labelStyle: TextStyle(fontWeight: FontWeight.w600, fontFamily: 'InriaSans'),
           tabs: [
             Tab(text: 'Запросы'),
             Tab(text: 'Инвестиции'),
@@ -58,7 +58,7 @@ class InvestmentTabBar extends StatelessWidget {
                               color: Color.fromARGB(255, 236, 229, 229),
                             ),
                           ),
-                          style: const TextStyle(color: Colors.white),
+                          style: const TextStyle(color: Colors.white, fontFamily: 'InriaSans'),
                         ),
                       ),
                     ],

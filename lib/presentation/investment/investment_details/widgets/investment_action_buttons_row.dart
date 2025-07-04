@@ -19,7 +19,7 @@ class InvestmentActionButtonsRow extends StatelessWidget {
         },
         child: const Text(
           'Связаться',
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white, fontFamily: 'InriaSans'),
         ),
       ),
     );

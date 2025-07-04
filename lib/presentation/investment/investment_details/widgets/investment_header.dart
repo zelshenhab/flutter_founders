@@ -18,6 +18,7 @@ class InvestmentHeader extends StatelessWidget {
             color: Colors.white,
             fontSize: 22,
             fontWeight: FontWeight.bold,
+            fontFamily: 'InriaSans',
           ),
         ),
         const SizedBox(height: 20),
@@ -76,9 +77,9 @@ class _InfoRow extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: const TextStyle(fontSize: 13, color: Colors.white)),
+        Text(label, style: const TextStyle(fontSize: 13, color: Colors.white, fontFamily: 'InriaSans')),
         const SizedBox(height: 4),
-        Text(value, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
+        Text(value, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white, fontFamily: 'InriaSans')),
       ],
     );
   }
@@ -96,7 +97,7 @@ class _FileBlock extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: const TextStyle(color: Colors.white, fontSize: 13)),
+        Text(label, style: const TextStyle(color: Colors.white, fontSize: 13, fontFamily: 'InriaSans',)),
         const SizedBox(height: 6),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),

@@ -79,7 +79,7 @@ class InvestmentSubmitButton extends StatelessWidget {
                   )
                 : const Text(
                     'Отправить на модерацию',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, fontFamily: 'InriaSans'),
                   ),
           ),
         );

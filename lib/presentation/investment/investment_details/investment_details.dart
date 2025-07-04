@@ -23,7 +23,7 @@ class InvestmentDetailsPage extends StatelessWidget {
         ),
         title: const Text(
           'Инвестиция',
-          style: TextStyle(color: Colors.white, fontSize: 20),
+          style: TextStyle(color: Colors.white, fontSize: 20, fontFamily: 'InriaSans'),
         ),
       ),
       body: SafeArea(

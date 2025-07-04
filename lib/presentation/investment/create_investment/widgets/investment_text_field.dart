@@ -34,14 +34,14 @@ class InvestmentTextField extends StatelessWidget {
           TextFormField(
             initialValue: initialValue,
             onChanged: onChanged,
-            style: const TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white, fontFamily: 'InriaSans'),
             minLines: minLines,
             maxLines: maxLines,
             decoration: InputDecoration(
               filled: true,
               fillColor: Colors.grey.shade900,
               hintText: hintText,
-              hintStyle: TextStyle(color: Colors.white.withOpacity(0.5)),
+              hintStyle: TextStyle(color: Colors.white.withOpacity(0.5), fontFamily: 'InriaSans'),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
                 borderSide: BorderSide.none,

@@ -40,7 +40,7 @@ class SearchBarWithFilter extends StatelessWidget {
                           color: Color.fromARGB(255, 236, 229, 229),
                         ),
                       ),
-                      style: const TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white, fontFamily: 'InriaSans',),
                     ),
                   ),
                 ],

@@ -44,6 +44,7 @@ class InvestmentCard extends StatelessWidget {
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 16,
+                  fontFamily: 'InriaSans',
                 ),
               ),
               const SizedBox(height: 12),
@@ -84,8 +85,8 @@ class InvestmentCard extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(label, style: const TextStyle(color: Colors.white60, fontSize: 13)),
-          Text(value, style: const TextStyle(color: Colors.white, fontSize: 13)),
+          Text(label, style: const TextStyle(color: Colors.white60, fontSize: 13, fontFamily: 'InriaSans',)),
+          Text(value, style: const TextStyle(color: Colors.white, fontSize: 13, fontFamily: 'InriaSans',)),
         ],
       ),
     );

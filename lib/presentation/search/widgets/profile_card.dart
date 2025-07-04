@@ -70,6 +70,7 @@ class ProfileCard extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 12,
                           color: Colors.white,
+                          fontFamily: 'InriaSans',
                         ),
                       ),
                     );
@@ -96,6 +97,7 @@ class ProfileCard extends StatelessWidget {
                           style: const TextStyle(
                             fontSize: 12,
                             color: Colors.white,
+                            fontFamily: 'InriaSans',
                           ),
                         ),
                       );

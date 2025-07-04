@@ -15,6 +15,7 @@ class InvestmentDescriptionCard extends StatelessWidget {
           'Описание',
           style: TextStyle(
             color: Colors.white,
+            fontFamily: 'InriaSans',
             fontSize: 14,
           ),
         ),
@@ -29,6 +30,7 @@ class InvestmentDescriptionCard extends StatelessWidget {
             description,
             style: const TextStyle(
               color: Colors.white70,
+              fontFamily: 'InriaSans',
               fontSize: 14,
               height: 1.4,
             ),

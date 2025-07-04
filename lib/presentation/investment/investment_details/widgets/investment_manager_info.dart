@@ -22,6 +22,7 @@ class InvestmentManagerInfo extends StatelessWidget {
           style: TextStyle(
             color: Colors.white,
             fontSize: 14,
+            fontFamily: 'InriaSans',
           ),
         ),
         const SizedBox(height: 12),
@@ -47,6 +48,7 @@ class InvestmentManagerInfo extends StatelessWidget {
                       style: const TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
+                        fontFamily: 'InriaSans',
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -64,7 +66,7 @@ class InvestmentManagerInfo extends StatelessWidget {
                                 child: Text(
                                   tag,
                                   style: const TextStyle(
-                                      color: Colors.white, fontSize: 12),
+                                      color: Colors.white, fontSize: 12, fontFamily: 'InriaSans'),
                                 ),
                               ))
                           .toList(),

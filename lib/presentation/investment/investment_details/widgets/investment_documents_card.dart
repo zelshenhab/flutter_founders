@@ -22,6 +22,7 @@ class InvestmentDocumentsCard extends StatelessWidget {
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
+              fontFamily: 'InriaSans',
               fontSize: 14,
             ),
           ),
@@ -40,7 +41,7 @@ class InvestmentDocumentsCard extends StatelessWidget {
                       child: Text(
                         file,
                         style: const TextStyle(
-                            color: Colors.white, fontSize: 12),
+                            color: Colors.white, fontSize: 12, fontFamily: 'InriaSans'),
                       ),
                     ))
                 .toList(),

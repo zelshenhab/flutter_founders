@@ -23,7 +23,7 @@ class InvestmentFileUpload extends StatelessWidget {
         children: [
           Text(
             label,
-            style: const TextStyle(color: Colors.white, fontSize: 14),
+            style: const TextStyle(color: Colors.white, fontSize: 14, fontFamily: 'InriaSans'),
           ),
           const SizedBox(height: 6),
           GestureDetector(

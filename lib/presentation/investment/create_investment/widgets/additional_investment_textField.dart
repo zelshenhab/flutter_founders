@@ -21,7 +21,7 @@ class AdditionalInvestmentTextField extends StatelessWidget {
             children: [
               const Text(
                 'Дополнительно',
-                style: TextStyle(color: Colors.white, fontSize: 14),
+                style: TextStyle(color: Colors.white, fontSize: 14, fontFamily: 'InriaSans'),
               ),
               const SizedBox(height: 6),
               TextFormField(
@@ -30,12 +30,12 @@ class AdditionalInvestmentTextField extends StatelessWidget {
                   UpdateTextField(fieldKey: 'additional', value: value),
                 ),
                 maxLines: 4,
-                style: const TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.white, fontFamily: 'InriaSans'),
                 decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.grey.shade900,
                   hintText: 'Необязательное поле',
-                  hintStyle: TextStyle(color: Colors.white.withOpacity(0.4)),
+                  hintStyle: TextStyle(color: Colors.white.withOpacity(0.4), fontFamily: 'InriaSans'),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
                     borderSide: BorderSide.none,

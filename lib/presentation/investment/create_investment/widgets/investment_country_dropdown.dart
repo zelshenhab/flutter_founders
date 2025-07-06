@@ -22,19 +22,19 @@ class InvestmentCountryDropdown extends StatelessWidget {
         children: [
           const Text(
             'Страна реализации',
-            style: TextStyle(color: Colors.white, fontSize: 14),
+            style: TextStyle(color: Colors.white, fontSize: 14, fontFamily: 'InriaSans'),
           ),
           const SizedBox(height: 6),
           DropdownButtonFormField<String>(
             value: selected,
             icon: const Icon(Icons.arrow_drop_down, color: Colors.white),
             dropdownColor: Colors.grey.shade900,
-            style: const TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white, fontFamily: 'InriaSans'),
             decoration: InputDecoration(
               filled: true,
               fillColor: Colors.grey.shade900,
               hintText: 'Выберите страну',
-              hintStyle: TextStyle(color: Colors.white.withOpacity(0.5)),
+              hintStyle: TextStyle(color: Colors.white.withOpacity(0.5), fontFamily: 'InriaSans'),
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
                 borderSide: BorderSide.none,

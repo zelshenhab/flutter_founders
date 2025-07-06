@@ -24,12 +24,24 @@ class SharedAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: [
         IconButton(
-          icon: const Icon(Icons.edit_note, color: Colors.white, size: 38),
           onPressed: onCreatePressed,
+          icon: Image.asset(
+            'assets/pngs/create.png',
+            width: 30,
+            height: 30,
+            color: Colors.white, // optional: keeps it consistent with theme
+          ),
         ),
-        const SizedBox(width: 16),
-        const Icon(Icons.notifications_none, color: Colors.white, size: 38),
-        const SizedBox(width: 16),
+        const SizedBox(width: 3),
+        Padding(
+          padding: const EdgeInsets.only(right: 25),
+          child: Image.asset(
+            'assets/pngs/notification.png',
+            width: 30,
+            height: 30,
+            color: Colors.white,
+          ),
+        ),
       ],
     );
   }

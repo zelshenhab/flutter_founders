@@ -1,4 +1,3 @@
-// lib/presentation/profile/models/profile_model.dart
 class ProfileModel {
   final String name;
   final String company;

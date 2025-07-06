@@ -5,9 +5,7 @@ import 'bloc/chat_bloc.dart';
 import 'bloc/chat_event.dart';
 import 'bloc/chat_state.dart';
 import 'chat_detail_page.dart';
-import 'models/mock_chat_data.dart';
 import 'widgets/chat_list_tile.dart';
-import '../search/widgets/search_bar_with_filter.dart';
 
 class ChatListPage extends StatelessWidget {
   const ChatListPage({super.key});

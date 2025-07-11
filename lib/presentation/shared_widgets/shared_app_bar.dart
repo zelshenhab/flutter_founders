@@ -29,7 +29,7 @@ class SharedAppBar extends StatelessWidget implements PreferredSizeWidget {
             'assets/pngs/create.png',
             width: 30,
             height: 30,
-            color: Colors.white, // optional: keeps it consistent with theme
+            color: Colors.white,
           ),
         ),
         const SizedBox(width: 3),

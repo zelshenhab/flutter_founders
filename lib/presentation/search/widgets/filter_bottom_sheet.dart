@@ -95,7 +95,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                 final tag = entry.key;
                 final subTags = entry.value;
                 return Padding(
-                  padding: const EdgeInsets.only(bottom: 0), // 👈 Space between tags
+                  padding: const EdgeInsets.only(bottom: 0), 
                   child: Theme(
                     data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
                     child: ExpansionTile(

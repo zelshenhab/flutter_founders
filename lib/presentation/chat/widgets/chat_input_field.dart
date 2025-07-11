@@ -75,7 +75,6 @@ class _ChatInputFieldState extends State<ChatInputField> {
     final message = _controller.text.trim();
     if (message.isEmpty && _attachments.isEmpty) return;
 
-    // Here you would dispatch a Bloc event like: SendMessage(message, attachments)
     debugPrint('Sending message: "$message"');
     debugPrint('Attachments count: ${_attachments.length}');
 

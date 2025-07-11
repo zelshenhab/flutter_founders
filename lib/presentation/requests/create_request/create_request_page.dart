@@ -19,10 +19,17 @@ class CreateRequestPage extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.black,
           elevation: 0,
-          automaticallyImplyLeading: true,
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back_ios_new, color: Colors.white),
+            onPressed: () => Navigator.pop(context),
+          ),
           title: const Text(
             'Создать запрос',
-            style: TextStyle(color: Colors.white, fontSize: 24, fontFamily: 'InriaSans'),
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 24,
+              fontFamily: 'InriaSans',
+            ),
           ),
         ),
         body: SafeArea(

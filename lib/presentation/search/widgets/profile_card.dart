@@ -28,7 +28,6 @@ class ProfileCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Name with flag inline
                 Text(
                   '${profile.name} ${profile.countryFlag}',
                   style: const TextStyle(
@@ -41,7 +40,6 @@ class ProfileCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 2),
 
-                // Company
                 Text(
                   profile.company,
                   style: const TextStyle(
@@ -52,7 +50,6 @@ class ProfileCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
 
-                // Main tags
                 Wrap(
                   spacing: 6,
                   runSpacing: 6,
@@ -77,7 +74,7 @@ class ProfileCard extends StatelessWidget {
                   }).toList(),
                 ),
 
-                // Optional sub-tags
+                // sub-tags
                 if (profile.subTags != null && profile.subTags!.isNotEmpty) ...[
                   const SizedBox(height: 6),
                   Wrap(
@@ -112,7 +109,6 @@ class ProfileCard extends StatelessWidget {
     );
   }
 
-  // 🎨 Main tag colors
   Color _getTagColor(String tag) {
     switch (tag.toLowerCase()) {
       case 'it':
@@ -148,7 +144,6 @@ class ProfileCard extends StatelessWidget {
     }
   }
 
-  // 🎨 Sub-tag colors
   Color _getSubTagColor(String subTag) {
     final lower = subTag.toLowerCase();
 

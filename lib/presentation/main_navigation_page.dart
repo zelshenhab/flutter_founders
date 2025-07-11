@@ -28,10 +28,14 @@ class _MainNavigationPageState extends State<MainNavigationPage> {
   ];
 
   void _onTabTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-  }
+  setState(() {
+    _currentIndex = index;
+
+    if (index == 0) {
+      _tabIndexNotifier.value = 0;
+    }
+  });
+}
 
   @override
   Widget build(BuildContext context) {

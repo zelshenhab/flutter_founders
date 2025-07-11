@@ -29,7 +29,6 @@ class HomeTabBarPage extends StatelessWidget {
 
           return Column(
             children: [
-              // ✅ AppBar هنا فقط
               SharedAppBar(
                 onCreatePressed: () {
                   final tabIndex = tabIndexNotifier.value;

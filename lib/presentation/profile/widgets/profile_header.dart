@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_founders/presentation/profile/models/profile_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProfileHeader extends StatelessWidget {
-  const ProfileHeader({super.key});
+  const ProfileHeader({super.key, required ProfileModel profile});
 
   @override
   Widget build(BuildContext context) {

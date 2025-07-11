@@ -33,19 +33,15 @@ class RequestDetailsPage extends StatelessWidget {
             ),
             const SizedBox(height: 16),
 
-            // Description
             RequestDescriptionCard(description: request.description),
             const SizedBox(height: 2),
 
-            // Tags
             RequestTags(tags: request.tags),
             const SizedBox(height: 10),
 
-            // Actions Row
             const ActionButtonsRow(),
             const SizedBox(height: 16),
 
-            // ثابت حاليًا - يمكن تغييره لاحقًا حسب بيانات الطلب
             const RequestUserCompanyInfo(),
           ],
         ),

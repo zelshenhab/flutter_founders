@@ -1,4 +1,3 @@
-// lib/presentation/requests/create_request/bloc/create_request_state.dart
 import 'package:equatable/equatable.dart';
 
 class CreateRequestState extends Equatable {

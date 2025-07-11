@@ -1,4 +1,3 @@
-// lib/presentation/requests/create_request/bloc/create_request_bloc.dart
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'create_request_event.dart';
 import 'create_request_state.dart';
@@ -20,7 +19,7 @@ class CreateRequestBloc extends Bloc<CreateRequestEvent, CreateRequestState> {
     on<SubmitRequest>((event, emit) async {
       emit(state.copyWith(isSubmitting: true, isSuccess: false, isFailure: false));
 
-      await Future.delayed(const Duration(seconds: 1)); // Simulate network/send
+      await Future.delayed(const Duration(seconds: 1)); 
 
       if (state.title.isNotEmpty && state.description.isNotEmpty) {
         emit(state.copyWith(

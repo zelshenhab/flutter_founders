@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class InvestmentManagerInfo extends StatelessWidget {
   final String name;
-  final String imageUrl; // still part of model, unused for now
+  final String imageUrl; 
   final List<String> tags;
 
   const InvestmentManagerInfo({

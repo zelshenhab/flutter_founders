@@ -1,4 +1,3 @@
-// lib/presentation/investment/bloc/investment_state.dart
 import 'package:equatable/equatable.dart';
 import '../models/investment_model.dart';
 

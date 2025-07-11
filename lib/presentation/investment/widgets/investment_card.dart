@@ -28,10 +28,10 @@ class InvestmentCard extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(16),
         child: Container(
-          width: 50, // ✅ full-width card
+          width: 50,
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: const Color(0xFF2C2C2E), // Dark gray card
+            color: const Color(0xFF2C2C2E), 
             borderRadius: BorderRadius.circular(16),
           ),
           child: Column(

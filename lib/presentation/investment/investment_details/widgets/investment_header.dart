@@ -11,7 +11,6 @@ class InvestmentHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Investment title
         Text(
           model.title,
           style: const TextStyle(
@@ -23,7 +22,6 @@ class InvestmentHeader extends StatelessWidget {
         ),
         const SizedBox(height: 20),
 
-        // Main card container
         Container(
           width: double.infinity,
           padding: const EdgeInsets.all(16),
@@ -52,7 +50,6 @@ class InvestmentHeader extends StatelessWidget {
 
         const SizedBox(height: 12),
 
-        // Like and Save buttons (outside the container)
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: const [
@@ -65,7 +62,6 @@ class InvestmentHeader extends StatelessWidget {
   }
 }
 
-// Info section
 class _InfoRow extends StatelessWidget {
   final String label;
   final String value;
@@ -85,7 +81,6 @@ class _InfoRow extends StatelessWidget {
   }
 }
 
-// File download blocks
 class _FileBlock extends StatelessWidget {
   final String label;
   final String fileName;
@@ -115,7 +110,6 @@ class _FileBlock extends StatelessWidget {
   }
 }
 
-// Heart/Bookmark button
 class _IconButton extends StatelessWidget {
   final IconData icon;
 
@@ -124,7 +118,7 @@ class _IconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 4), // internal spacing
+      padding: const EdgeInsets.symmetric(horizontal: 4), 
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
         onTap: () {

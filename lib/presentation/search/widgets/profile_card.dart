@@ -16,14 +16,12 @@ class ProfileCard extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Avatar
           CircleAvatar(
             radius: 26,
             backgroundImage: NetworkImage(profile.imageUrl),
           ),
           const SizedBox(width: 12),
 
-          // Name, company, tags
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -74,7 +72,6 @@ class ProfileCard extends StatelessWidget {
                   }).toList(),
                 ),
 
-                // sub-tags
                 if (profile.subTags != null && profile.subTags!.isNotEmpty) ...[
                   const SizedBox(height: 6),
                   Wrap(

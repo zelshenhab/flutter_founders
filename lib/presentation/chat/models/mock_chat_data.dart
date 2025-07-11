@@ -1,4 +1,3 @@
-// 📁 lib/presentation/chat/models/mock_chat_data.dart
 class ChatContact {
   final String name;
   final String company;

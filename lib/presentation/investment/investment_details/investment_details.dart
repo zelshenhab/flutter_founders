@@ -32,11 +32,9 @@ class InvestmentDetailsPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // 1. Header + documents (now combined)
               InvestmentHeader(model: investment),
               const SizedBox(height: 24),
 
-              // 2. Manager Info
               InvestmentManagerInfo(
                 name: investment.managerName,
                 imageUrl: investment.managerImage,
@@ -44,11 +42,9 @@ class InvestmentDetailsPage extends StatelessWidget {
               ),
               const SizedBox(height: 24),
 
-              // 3. Description
               InvestmentDescriptionCard(description: investment.description),
               const SizedBox(height: 32),
 
-              // 4. Action Buttons
               const InvestmentActionButtonsRow(),
             ],
           ),

@@ -1,7 +1,6 @@
-// lib/presentation/profile/models/partner_model.dart
 class PartnerModel {
   final String name;
-  final String company; // ← مضاف جديد
+  final String company; 
   final String subtitle;
   final String avatarUrl;
 

@@ -1,4 +1,3 @@
-// lib/presentation/investment/bloc/investment_bloc.dart
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../models/investment_model.dart';
 import 'investment_event.dart';
@@ -7,7 +6,7 @@ import 'investment_state.dart';
 class InvestmentBloc extends Bloc<InvestmentEvent, InvestmentState> {
   InvestmentBloc() : super(InvestmentInitial()) {
     on<LoadInvestmentsEvent>(_onLoadInvestments);
-    on<AddInvestmentEvent>(_onAddInvestment); // 👈 new event handler
+    on<AddInvestmentEvent>(_onAddInvestment); 
   }
 
   Future<void> _onLoadInvestments(
@@ -15,7 +14,7 @@ class InvestmentBloc extends Bloc<InvestmentEvent, InvestmentState> {
     Emitter<InvestmentState> emit,
   ) async {
     emit(InvestmentLoading());
-    await Future.delayed(const Duration(seconds: 1)); // Simulate delay
+    await Future.delayed(const Duration(seconds: 1)); 
 
     try {
       final mockData = [

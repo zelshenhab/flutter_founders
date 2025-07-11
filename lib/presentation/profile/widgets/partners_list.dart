@@ -1,4 +1,3 @@
-// lib/presentation/profile/widgets/partners_list.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_founders/presentation/profile/models/partner_model.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,19 +17,16 @@ class PartnersList extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 12),
               child: Row(
                 children: [
-                  // Avatar
                   CircleAvatar(
                     radius: 24,
                     backgroundImage: AssetImage(partner.avatarUrl),
                   ),
                   const SizedBox(width: 12),
 
-                  // Info
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Name
                         Text(
                           partner.name,
                           style: GoogleFonts.inriaSans(
@@ -41,17 +37,15 @@ class PartnersList extends StatelessWidget {
                         ),
                         const SizedBox(height: 2),
 
-                        // Company
                         Text(
                           partner.company,
                           style: GoogleFonts.inriaSans(
                             fontSize: 13,
                             fontWeight: FontWeight.w500,
-                            color: const Color(0xFFAF925D), // نفس لون الشركة الرئيسي
+                            color: const Color(0xFFAF925D), 
                           ),
                         ),
 
-                        // Subtitle
                         Text(
                           partner.subtitle,
                           style: GoogleFonts.inriaSans(
@@ -65,13 +59,11 @@ class PartnersList extends StatelessWidget {
 
                   const SizedBox(width: 8),
 
-                  // Chat icon
                   const Icon(Icons.chat_bubble_outline, color: Colors.white70),
                 ],
               ),
             ),
 
-            // Divider
             Container(
               height: 1,
               color: Colors.white12,

@@ -1,4 +1,3 @@
-// lib/presentation/investment/investment_details/widgets/investment_documents_card.dart
 import 'package:flutter/material.dart';
 
 class InvestmentDocumentsCard extends StatelessWidget {

@@ -1,4 +1,3 @@
-// 📁 lib/presentation/chat/bloc/chat_state.dart
 import '../models/mock_chat_data.dart';
 
 abstract class ChatState {}

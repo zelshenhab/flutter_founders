@@ -1,4 +1,3 @@
-// lib/presentation/profile/widgets/profile_header.dart
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -9,7 +8,6 @@ class ProfileHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        // ✅ صف الأيقونات في أعلى يمين الشاشة
         Padding(
           padding: const EdgeInsets.only(right: 16, top: 8),
           child: Row(
@@ -24,7 +22,6 @@ class ProfileHeader extends StatelessWidget {
 
         const SizedBox(height: 12),
 
-        // ✅ صورة البروفايل
         const CircleAvatar(
           radius: 56,
           backgroundImage: AssetImage('assets/images/image 2.png'),
@@ -32,7 +29,6 @@ class ProfileHeader extends StatelessWidget {
 
         const SizedBox(height: 12),
 
-        // ✅ الاسم
         Text(
           'Александр Монтгомери',
           style: GoogleFonts.inriaSans(
@@ -44,7 +40,6 @@ class ProfileHeader extends StatelessWidget {
 
         const SizedBox(height: 4),
 
-        // ✅ اسم الشركة
         Text(
           'ScaleUp Solutions',
           style: GoogleFonts.inriaSans(
@@ -56,7 +51,6 @@ class ProfileHeader extends StatelessWidget {
 
         const SizedBox(height: 2),
 
-        // ✅ النص الفرعي
         Text(
           'Цифровизация бизнеса',
           style: GoogleFonts.inriaSans(fontSize: 12, color: Colors.white70),

@@ -38,7 +38,7 @@ class _CreateInvestmentForm extends StatelessWidget {
           style: TextStyle(
             color: Colors.white,
             fontSize: 20,
-            fontFamily: 'InriaSans', // 👈 Applied here
+            fontFamily: 'InriaSans', 
           ),
         ),
       ),

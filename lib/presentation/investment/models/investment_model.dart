@@ -1,4 +1,3 @@
-// lib/presentation/investment/models/investment_model.dart
 class InvestmentModel {
   final String title;
   final String amount;
@@ -7,7 +6,6 @@ class InvestmentModel {
   final String tag;
   final int tagColor;
 
-  // Optional: These will be used in InvestmentDetailsPage
   final String description;
   final List<String> files;
   final String managerName;

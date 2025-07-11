@@ -44,7 +44,6 @@ class TagSelector extends StatelessWidget {
             ),
             const SizedBox(height: 8),
 
-            // البطاقة الرمادية الكاملة
             Container(
               decoration: BoxDecoration(
                 color: const Color.fromARGB(255, 40, 40, 42),
@@ -53,7 +52,6 @@ class TagSelector extends StatelessWidget {
               padding: const EdgeInsets.all(12),
               child: Column(
                 children: [
-                  // شريط البحث
                   Container(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 12,
@@ -76,7 +74,6 @@ class TagSelector extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
 
-                  // التاجات
                   Wrap(
                     spacing: 8,
                     runSpacing: 8,

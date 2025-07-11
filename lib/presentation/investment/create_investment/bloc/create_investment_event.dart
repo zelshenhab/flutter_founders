@@ -1,4 +1,3 @@
-// lib/presentation/investment/create_investment/bloc/create_investment_event.dart
 import 'package:equatable/equatable.dart';
 import 'dart:io';
 

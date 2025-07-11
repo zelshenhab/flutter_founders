@@ -1,4 +1,3 @@
-// 📁 lib/presentation/chat/widgets/chat_list_tile.dart
 import 'package:flutter/material.dart';
 import '../models/mock_chat_data.dart';
 

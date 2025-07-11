@@ -1,4 +1,3 @@
-// 📁 lib/presentation/chat/chat_detail_page.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_founders/presentation/chat/widgets/chat_app_bar.dart.dart';
 import 'models/mock_chat_data.dart';

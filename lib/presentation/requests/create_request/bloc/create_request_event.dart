@@ -1,4 +1,3 @@
-// lib/presentation/requests/create_request/bloc/create_request_event.dart
 import 'package:equatable/equatable.dart';
 
 abstract class CreateRequestEvent extends Equatable {

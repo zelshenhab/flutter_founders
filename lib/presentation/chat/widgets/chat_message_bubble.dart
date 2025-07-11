@@ -1,4 +1,3 @@
-// 📁 lib/presentation/chat/widgets/chat_message_bubble.dart
 import 'package:flutter/material.dart';
 import '../models/mock_chat_data.dart';
 

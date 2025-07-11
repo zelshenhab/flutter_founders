@@ -17,9 +17,8 @@ class RequestHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.center, // ← ده المهم
+      crossAxisAlignment: CrossAxisAlignment.center, 
       children: [
-        // Avatar
         CircleAvatar(
           radius: 45,
           backgroundImage: avatarUrl != null ? AssetImage(avatarUrl!) : null,
@@ -30,12 +29,11 @@ class RequestHeader extends StatelessWidget {
         ),
         const SizedBox(width: 12),
 
-        // Name and company
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize:
-                MainAxisSize.min, // علشان الـ Column ما تاخدش ارتفاع زيادة
+                MainAxisSize.min, 
             children: [
               Text(
                 name,
@@ -59,7 +57,6 @@ class RequestHeader extends StatelessWidget {
           ),
         ),
 
-        // Time
         Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisSize: MainAxisSize.min,

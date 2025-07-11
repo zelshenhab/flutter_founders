@@ -13,7 +13,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
   List<String> selectedCountries = [];
   List<String> selectedMainTags = [];
   List<String> selectedSubTags = [];
-  Set<String> expandedTags = {}; // 👈 Tracks which tags are expanded
+  Set<String> expandedTags = {}; 
   bool isFoundersOnly = false;
 
   void _resetFilters() {
@@ -119,7 +119,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                           Padding(
                             padding: const EdgeInsets.only(left: 10),
                             child: AnimatedRotation(
-                              turns: expandedTags.contains(tag) ? 0.75 : 0.5, // 👈 right → down
+                              turns: expandedTags.contains(tag) ? 0.75 : 0.5,
                               duration: const Duration(milliseconds: 200),
                               child: const Icon(
                                 Icons.arrow_back_ios_new,
@@ -255,8 +255,6 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
     );
   }
 }
-
-// TEXT STYLES
 
 const _headerTextStyle = TextStyle(
   color: Colors.white,

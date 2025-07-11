@@ -1,5 +1,3 @@
-// lib/presentation/search/widgets/search_bar_with_filter.dart
-
 import 'package:flutter/material.dart';
 
 class SearchBarWithFilter extends StatelessWidget {
